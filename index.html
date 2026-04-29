@@ -17,7 +17,7 @@
   --ink-muted: #555;
   --ink-faint: #999;
   --paper: #fff;
-  --bg: #f7f7f5;
+  --bg: #fff;
   --rule: #e8e8e4;
   --accent: #1a56a0;
   --accent-hover: #0e3d7a;
@@ -137,11 +137,11 @@ nav {
 .tl-org { font-size: 14px; color: var(--accent); margin-bottom: 4px; }
 .tl-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.6; }
 .tl-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
-.tl-tag { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); background: var(--bg); border: 1px solid var(--rule); border-radius: 2px; padding: 1px 7px; }
+.tl-tag { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); background: #f7f7f5; border: 1px solid var(--rule); border-radius: 2px; padding: 1px 7px; }
 
 /* RESEARCH INTERESTS */
 .interest-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-.interest-card { background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 1rem; }
+.interest-card { background: #f7f7f5; border: 1px solid var(--rule); border-radius: 6px; padding: 1rem; }
 .interest-card h4 { font-family: var(--serif); font-size: 15px; margin-bottom: 5px; font-weight: 500; }
 .interest-card p { font-size: 13px; color: var(--ink-muted); line-height: 1.55; }
 
@@ -165,10 +165,10 @@ footer { text-align: center; padding: 2rem; font-family: var(--mono); font-size:
     <a class="nav-brand" href="#">li.yihan</a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#experience">Internships</a></li>
       <li><a href="#news">News</a></li>
       <li><a href="#publications">Publications</a></li>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#experience">Experience</a></li>
       <li><a href="#education">Education</a></li>
     </ul>
   </div>
@@ -204,12 +204,11 @@ footer { text-align: center; padding: 2rem; font-family: var(--mono); font-size:
       <p>
         I am a Master's student in Communication Engineering at
         <strong>Beijing University of Posts and Telecommunications (BUPT)</strong>,
-        advised by my supervisor in the school of artificial intelligence. I received my B.Eng. from
+        I received my B.Eng. from
         <strong>Nanjing University of Posts and Telecommunications (NJUPT)</strong> in 2024.
       </p>
       <p>
         My research focuses on <strong>LLM post-training</strong>, <strong>agentic reinforcement learning</strong>
-        (reasoning, coding agents, multi-step planning), and <strong>multimodal computer vision</strong>.
         I embrace AI wholeheartedly — always learning, always building.
       </p>
       <p>
@@ -219,6 +218,54 @@ footer { text-align: center; padding: 2rem; font-family: var(--mono); font-size:
       </p>
     </div>
 
+    <!-- RESEARCH INTERESTS -->
+    <div class="section" id="research">
+      <h2 class="section-title"><span class="emoji">🔬</span> Research Interests</h2>
+      <div class="interest-grid">
+        <div class="interest-card">
+          <h4>LLM Post-Training</h4>
+          <p>SFT, RLHF, DPO. How post-training shapes instruction-following, alignment, and model behavior.</p>
+        </div>
+        <div class="interest-card">
+          <h4>Agentic RL</h4>
+          <p>LLM-based agents with chain-of-thought reasoning, autonomous coding, and multi-step planning via reinforcement learning.</p>
+        </div>
+        <div class="interest-card">
+          <h4>Multimodal Learning</h4>
+          <p>Vision-language models bridging image and text understanding for tasks such as VQA, image captioning, and cross-modal reasoning.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="section" id="experience">
+      <h2 class="section-title"><span class="emoji">💼</span> Internships</h2>
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-date">Oct 2025 –<br>Feb 2026</span>
+          <div>
+            <p class="tl-role">LLM Algorithm Intern</p>
+            <p class="tl-org">Kuaishou (快手)</p>
+            <p class="tl-desc">Worked on a conversational AI chat product combining LLMs with reinforcement learning. Focused on RLHF-based post-training pipelines to improve response quality and engagement.</p>
+            <div class="tl-tags">
+              <span class="tl-tag">LLM</span><span class="tl-tag">RLHF</span><span class="tl-tag">Post-training</span><span class="tl-tag">Chat</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-date">Apr – Sep 2025</span>
+          <div>
+            <p class="tl-role">LLM Algorithm Intern</p>
+            <p class="tl-org">TeleAI</p>
+            <p class="tl-desc">Developed and optimized role-playing language models, focusing on character consistency, persona alignment, and instruction-following for immersive conversational AI.</p>
+            <div class="tl-tags">
+              <span class="tl-tag">LLM</span><span class="tl-tag">Role-playing</span><span class="tl-tag">SFT</span><span class="tl-tag">Alignment</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- NEWS -->
     <div class="section" id="news">
       <h2 class="section-title"><span class="emoji">🔥</span> News</h2>
@@ -226,18 +273,6 @@ footer { text-align: center; padding: 2rem; font-family: var(--mono); font-size:
         <li>
           <span class="news-date">2026.01</span>
           <span class="news-text">🎉 Paper accepted at <strong>JVCI</strong> — Multi-view 3D model recognition via multi-label and multi-level fusion with bidirectional GRU.</span>
-        </li>
-        <li>
-          <span class="news-date">2025.10</span>
-          <span class="news-text">🚀 Started internship at <strong>Kuaishou</strong> as LLM Algorithm Intern, working on LLM + RL chat products.</span>
-        </li>
-        <li>
-          <span class="news-date">2025.04</span>
-          <span class="news-text">🚀 Started internship at <strong>TeleAI</strong> as LLM Algorithm Intern, working on role-playing language models.</span>
-        </li>
-        <li>
-          <span class="news-date">2024.09</span>
-          <span class="news-text">📚 Started M.Eng. at <strong>Beijing University of Posts and Telecommunications</strong>.</span>
         </li>
       </ul>
     </div>
@@ -258,54 +293,6 @@ footer { text-align: center; padding: 2rem; font-family: var(--mono); font-size:
             <p class="pub-venue">Journal of Visual Communication and Image Representation · January 2026</p>
             <div class="pub-links">
               <a class="pub-link" href="https://www.sciencedirect.com/science/article/pii/S1047320325003062" target="_blank">[paper]</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- RESEARCH INTERESTS -->
-    <div class="section" id="research">
-      <h2 class="section-title"><span class="emoji">🔬</span> Research Interests</h2>
-      <div class="interest-grid">
-        <div class="interest-card">
-          <h4>LLM Post-Training</h4>
-          <p>SFT, RLHF, DPO and preference optimization. How post-training shapes instruction-following, alignment, and model behavior.</p>
-        </div>
-        <div class="interest-card">
-          <h4>Agentic RL</h4>
-          <p>LLM-based agents with chain-of-thought reasoning, autonomous coding, and multi-step planning via reinforcement learning.</p>
-        </div>
-        <div class="interest-card">
-          <h4>Multimodal CV</h4>
-          <p>Vision-language foundation models for VQA, image captioning, and cross-modal retrieval.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- EXPERIENCE -->
-    <div class="section" id="experience">
-      <h2 class="section-title"><span class="emoji">💼</span> Experience</h2>
-      <div class="timeline">
-        <div class="tl-item">
-          <span class="tl-date">Oct 2025 –<br>Feb 2026</span>
-          <div>
-            <p class="tl-role">LLM Algorithm Intern</p>
-            <p class="tl-org">Kuaishou</p>
-            <p class="tl-desc">Worked on a conversational AI chat product combining LLMs with reinforcement learning. Focused on RLHF-based post-training pipelines to improve response quality and engagement.</p>
-            <div class="tl-tags">
-              <span class="tl-tag">LLM</span><span class="tl-tag">RLHF</span><span class="tl-tag">Post-training</span><span class="tl-tag">Chat</span>
-            </div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <span class="tl-date">Apr – Sep 2025</span>
-          <div>
-            <p class="tl-role">LLM Algorithm Intern</p>
-            <p class="tl-org">TeleAI</p>
-            <p class="tl-desc">Developed and optimized role-playing language models, focusing on character consistency, persona alignment, and instruction-following for immersive conversational AI.</p>
-            <div class="tl-tags">
-              <span class="tl-tag">LLM</span><span class="tl-tag">Role-playing</span><span class="tl-tag">SFT</span><span class="tl-tag">Alignment</span>
             </div>
           </div>
         </div>
