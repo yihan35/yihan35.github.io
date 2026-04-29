@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Li Yihan | BUPT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --sans: 'Lato', system-ui, sans-serif;
+  --serif: 'EB Garamond', Georgia, serif;
+  --mono: 'DM Mono', monospace;
+  --ink: #1c1c1c;
+  --ink-muted: #555;
+  --ink-faint: #999;
+  --paper: #fff;
+  --bg: #f7f7f5;
+  --rule: #e8e8e4;
+  --accent: #1a56a0;
+  --accent-hover: #0e3d7a;
+  --sidebar: 240px;
+  --gap: 40px;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 15px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+/* NAV */
+nav {
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+  padding: 0 2rem;
+  position: sticky; top: 0; z-index: 100;
+}
+.nav-inner {
+  max-width: 960px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; height: 48px;
+}
+.nav-brand { font-family: var(--mono); font-size: 13px; color: var(--ink-muted); letter-spacing: 0.03em; text-decoration: none; }
+.nav-links { display: flex; gap: 1.5rem; list-style: none; }
+.nav-links a { font-size: 13px; color: var(--ink-muted); text-decoration: none; transition: color 0.15s; }
+.nav-links a:hover { color: var(--accent); }
+
+/* LAYOUT */
+.page { max-width: 960px; margin: 0 auto; padding: 2.5rem 2rem 5rem; display: grid; grid-template-columns: var(--sidebar) 1fr; gap: var(--gap); align-items: start; }
+
+/* SIDEBAR */
+.sidebar { position: sticky; top: 64px; }
+.avatar {
+  width: 180px; height: 180px; border-radius: 50%;
+  background: var(--rule);
+  border: 3px solid var(--paper);
+  box-shadow: 0 0 0 1px var(--rule);
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 3.5rem; color: var(--ink-faint);
+  margin-bottom: 1rem;
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.sidebar-name { font-family: var(--serif); font-size: 1.5rem; font-weight: 500; line-height: 1.2; margin-bottom: 2px; }
+.sidebar-name-zh { font-size: 13px; color: var(--ink-faint); font-family: var(--mono); margin-bottom: 8px; }
+.sidebar-affil { font-size: 13px; color: var(--ink-muted); margin-bottom: 4px; line-height: 1.5; }
+.sidebar-links { margin-top: 14px; display: flex; flex-direction: column; gap: 5px; }
+.sidebar-links a {
+  font-size: 13px; color: var(--accent); text-decoration: none;
+  display: flex; align-items: center; gap: 6px;
+  transition: color 0.15s;
+}
+.sidebar-links a:hover { color: var(--accent-hover); }
+.sidebar-links .icon { width: 14px; height: 14px; opacity: 0.7; flex-shrink: 0; }
+
+.status-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #eef6ee; border: 1px solid #c5dfc5; border-radius: 20px;
+  padding: 3px 10px; font-size: 11px; color: #2d6a2d;
+  font-family: var(--mono); letter-spacing: 0.02em; margin-top: 10px;
+}
+.status-dot { width: 6px; height: 6px; background: #4caf50; border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* MAIN CONTENT */
+.content { min-width: 0; }
+
+/* BIO */
+.bio { margin-bottom: 2rem; }
+.bio p { font-size: 15px; color: var(--ink); line-height: 1.75; margin-bottom: 0.75rem; }
+.bio a { color: var(--accent); text-decoration: none; }
+.bio a:hover { text-decoration: underline; }
+.bio strong { font-weight: 700; }
+
+/* SECTION */
+.section { margin-bottom: 2.5rem; }
+.section-title {
+  font-family: var(--serif); font-size: 1.35rem; font-weight: 500;
+  margin-bottom: 1rem; padding-bottom: 0.4rem;
+  border-bottom: 1.5px solid var(--rule);
+  display: flex; align-items: center; gap: 8px;
+}
+.section-title .emoji { font-size: 1.1rem; }
+
+/* NEWS */
+.news-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.news-list li { font-size: 14px; color: var(--ink-muted); display: flex; gap: 10px; line-height: 1.6; }
+.news-date { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); white-space: nowrap; padding-top: 2px; min-width: 60px; }
+.news-text a { color: var(--accent); text-decoration: none; }
+.news-text a:hover { text-decoration: underline; }
+
+/* PUBLICATIONS */
+.pub-list { display: flex; flex-direction: column; gap: 1.5rem; }
+.pub-item { display: flex; gap: 1rem; align-items: flex-start; }
+.pub-badge {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em;
+  background: var(--accent); color: #fff;
+  padding: 2px 7px; border-radius: 3px;
+  white-space: nowrap; margin-top: 3px; flex-shrink: 0;
+}
+.pub-badge.preprint { background: #888; }
+.pub-body {}
+.pub-title { font-family: var(--serif); font-size: 15px; line-height: 1.45; margin-bottom: 3px; }
+.pub-title a { color: var(--ink); text-decoration: none; }
+.pub-title a:hover { color: var(--accent); }
+.pub-authors { font-size: 13px; color: var(--ink-muted); margin-bottom: 2px; }
+.pub-authors strong { color: var(--ink); }
+.pub-venue { font-size: 12px; font-family: var(--mono); color: var(--ink-faint); }
+.pub-links { margin-top: 5px; display: flex; gap: 10px; }
+.pub-link { font-size: 12px; font-family: var(--mono); color: var(--accent); text-decoration: none; }
+.pub-link:hover { text-decoration: underline; }
+
+/* EXPERIENCE / EDUCATION rows */
+.timeline { display: flex; flex-direction: column; gap: 1.1rem; }
+.tl-item { display: grid; grid-template-columns: 130px 1fr; gap: 0.75rem; }
+.tl-date { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); padding-top: 2px; line-height: 1.5; }
+.tl-role { font-size: 14px; font-weight: 700; margin-bottom: 1px; }
+.tl-org { font-size: 14px; color: var(--accent); margin-bottom: 4px; }
+.tl-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.6; }
+.tl-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+.tl-tag { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); background: var(--bg); border: 1px solid var(--rule); border-radius: 2px; padding: 1px 7px; }
+
+/* RESEARCH INTERESTS */
+.interest-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.interest-card { background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 1rem; }
+.interest-card h4 { font-family: var(--serif); font-size: 15px; margin-bottom: 5px; font-weight: 500; }
+.interest-card p { font-size: 13px; color: var(--ink-muted); line-height: 1.55; }
+
+/* FOOTER */
+footer { text-align: center; padding: 2rem; font-family: var(--mono); font-size: 12px; color: var(--ink-faint); border-top: 1px solid var(--rule); }
+
+/* MOBILE */
+@media (max-width: 700px) {
+  .page { grid-template-columns: 1fr; }
+  .sidebar { position: static; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .sidebar-links { align-items: center; }
+  .tl-item { grid-template-columns: 1fr; gap: 2px; }
+  .interest-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="#">li.yihan</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="about">
+    <div class="avatar">李</div>
+    <p class="sidebar-name">Li Yihan</p>
+    <p class="sidebar-name-zh">李一涵</p>
+    <p class="sidebar-affil">Beijing University of Posts and Telecommunications</p>
+    <p class="sidebar-affil" style="color:var(--ink-faint);font-size:12px;">M.Eng. in Communication Engineering</p>
+    <div class="status-pill"><span class="status-dot"></span>Open to internships · LLM / AI</div>
+    <div class="sidebar-links">
+      <a href="mailto:yihan.li0358@gmail.com">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        yihan.li0358@gmail.com
+      </a>
+      <a href="https://github.com/yihan35" target="_blank">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        github.com/yihan35
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="content">
+
+    <!-- BIO -->
+    <div class="bio">
+      <p>
+        I am a Master's student in Communication Engineering at
+        <strong>Beijing University of Posts and Telecommunications (BUPT)</strong>,
+        advised by my supervisor in the school of artificial intelligence. I received my B.Eng. from
+        <strong>Nanjing University of Posts and Telecommunications (NJUPT)</strong> in 2024.
+      </p>
+      <p>
+        My research focuses on <strong>LLM post-training</strong>, <strong>agentic reinforcement learning</strong>
+        (reasoning, coding agents, multi-step planning), and <strong>multimodal computer vision</strong>.
+        I embrace AI wholeheartedly — always learning, always building.
+      </p>
+      <p>
+        <strong>I am currently seeking internship positions in LLM / AI research and engineering.
+        Feel free to drop me an email at
+        <a href="mailto:yihan.li0358@gmail.com">yihan.li0358@gmail.com</a>.</strong>
+      </p>
+    </div>
+
+    <!-- NEWS -->
+    <div class="section" id="news">
+      <h2 class="section-title"><span class="emoji">🔥</span> News</h2>
+      <ul class="news-list">
+        <li>
+          <span class="news-date">2026.01</span>
+          <span class="news-text">🎉 Paper accepted at <strong>JVCI</strong> — Multi-view 3D model recognition via multi-label and multi-level fusion with bidirectional GRU.</span>
+        </li>
+        <li>
+          <span class="news-date">2025.10</span>
+          <span class="news-text">🚀 Started internship at <strong>Kuaishou (快手)</strong> as LLM Algorithm Intern, working on LLM + RL chat products.</span>
+        </li>
+        <li>
+          <span class="news-date">2025.04</span>
+          <span class="news-text">🚀 Started internship at <strong>TeleAI</strong> as LLM Algorithm Intern, working on role-playing language models.</span>
+        </li>
+        <li>
+          <span class="news-date">2024.09</span>
+          <span class="news-text">📚 Started M.Eng. at <strong>Beijing University of Posts and Telecommunications</strong>.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- PUBLICATIONS -->
+    <div class="section" id="publications">
+      <h2 class="section-title"><span class="emoji">📝</span> Publications</h2>
+      <div class="pub-list">
+        <div class="pub-item">
+          <span class="pub-badge">JVCI 2026</span>
+          <div class="pub-body">
+            <p class="pub-title">
+              <a href="https://www.sciencedirect.com/science/article/pii/S1047320325003062" target="_blank">
+                Multi-view 3D model recognition via multi-label and multi-level fusion with bidirectional GRU
+              </a>
+            </p>
+            <p class="pub-authors">Daojie Zhou, <strong>Yihan Li</strong>, Yi Li</p>
+            <p class="pub-venue">Journal of Visual Communication and Image Representation · January 2026</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://www.sciencedirect.com/science/article/pii/S1047320325003062" target="_blank">[paper]</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESEARCH INTERESTS -->
+    <div class="section" id="research">
+      <h2 class="section-title"><span class="emoji">🔬</span> Research Interests</h2>
+      <div class="interest-grid">
+        <div class="interest-card">
+          <h4>LLM Post-Training</h4>
+          <p>SFT, RLHF, DPO and preference optimization. How post-training shapes instruction-following, alignment, and model behavior.</p>
+        </div>
+        <div class="interest-card">
+          <h4>Agentic RL</h4>
+          <p>LLM-based agents with chain-of-thought reasoning, autonomous coding, and multi-step planning via reinforcement learning.</p>
+        </div>
+        <div class="interest-card">
+          <h4>Multimodal CV</h4>
+          <p>Vision-language foundation models for VQA, image captioning, and cross-modal retrieval.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="section" id="experience">
+      <h2 class="section-title"><span class="emoji">💼</span> Experience</h2>
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-date">Oct 2025 –<br>Feb 2026</span>
+          <div>
+            <p class="tl-role">LLM Algorithm Intern</p>
+            <p class="tl-org">Kuaishou (快手)</p>
+            <p class="tl-desc">Worked on a conversational AI chat product combining LLMs with reinforcement learning. Focused on RLHF-based post-training pipelines to improve response quality and engagement.</p>
+            <div class="tl-tags">
+              <span class="tl-tag">LLM</span><span class="tl-tag">RLHF</span><span class="tl-tag">Post-training</span><span class="tl-tag">Chat</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-date">Apr – Sep 2025</span>
+          <div>
+            <p class="tl-role">LLM Algorithm Intern</p>
+            <p class="tl-org">TeleAI</p>
+            <p class="tl-desc">Developed and optimized role-playing language models, focusing on character consistency, persona alignment, and instruction-following for immersive conversational AI.</p>
+            <div class="tl-tags">
+              <span class="tl-tag">LLM</span><span class="tl-tag">Role-playing</span><span class="tl-tag">SFT</span><span class="tl-tag">Alignment</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section" id="education">
+      <h2 class="section-title"><span class="emoji">📖</span> Education</h2>
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-date">2024 – 2027</span>
+          <div>
+            <p class="tl-role">M.Eng. in Communication Engineering</p>
+            <p class="tl-org">Beijing University of Posts and Telecommunications (BUPT)</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-date">2020 – 2024</span>
+          <div>
+            <p class="tl-role">B.Eng. in Communication Engineering</p>
+            <p class="tl-org">Nanjing University of Posts and Telecommunications (NJUPT)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  Li Yihan · BUPT · Last updated April 2026
+</footer>
+
+</body>
+</html>
