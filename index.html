@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Li Yihan | Master's Student</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --serif: 'EB Garamond', Georgia, serif;
+    --sans: 'Instrument Sans', system-ui, sans-serif;
+    --mono: 'DM Mono', monospace;
+    --ink: #1a1a18;
+    --ink-muted: #5a5a55;
+    --ink-faint: #9a9a94;
+    --paper: #faf9f7;
+    --paper-warm: #f4f3ef;
+    --rule: #e2e0da;
+    --accent: #2a52a0;
+    --accent-light: #edf0f9;
+    --max: 720px;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--paper); color: var(--ink); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(250,249,247,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); padding: 0 2rem; }
+  .nav-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+  .nav-name { font-family: var(--mono); font-size: 13px; color: var(--ink-muted); letter-spacing: 0.02em; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 13px; color: var(--ink-muted); text-decoration: none; letter-spacing: 0.03em; transition: color 0.15s; }
+  .nav-links a:hover { color: var(--accent); }
+
+  main { max-width: var(--max); margin: 0 auto; padding: 0 2rem 6rem; }
+  section { padding: 4rem 0; border-bottom: 1px solid var(--rule); }
+  section:last-child { border-bottom: none; }
+  .section-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 2rem; }
+
+  #about { padding-top: 5rem; display: grid; grid-template-columns: 1fr 160px; gap: 3rem; align-items: start; }
+  .hero-text h1 { font-family: var(--serif); font-size: clamp(2rem,5vw,2.8rem); font-weight: 400; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+  .hero-subtitle { font-family: var(--mono); font-size: 13px; color: var(--accent); margin-bottom: 1.5rem; letter-spacing: 0.02em; }
+  .hero-bio { font-size: 15px; color: var(--ink-muted); line-height: 1.75; max-width: 520px; }
+  .hero-links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+  .hero-links a { font-family: var(--mono); font-size: 12px; color: var(--ink-muted); text-decoration: none; border: 1px solid var(--rule); border-radius: 3px; padding: 5px 12px; transition: all 0.15s; letter-spacing: 0.03em; }
+  .hero-links a:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+  .avatar-wrap { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+  .avatar { width: 140px; height: 140px; border-radius: 50%; background: var(--paper-warm); border: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 2.5rem; color: var(--ink-faint); overflow: hidden; }
+
+  .status-pill { display: inline-flex; align-items: center; gap: 6px; background: #eef6ee; border: 1px solid #c5dfc5; border-radius: 20px; padding: 4px 12px; font-size: 12px; color: #2d6a2d; font-family: var(--mono); letter-spacing: 0.02em; }
+  .status-dot { width: 7px; height: 7px; background: #4caf50; border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  .edu-list { display: flex; flex-direction: column; gap: 1.75rem; }
+  .edu-item { display: grid; grid-template-columns: 130px 1fr; gap: 1rem; }
+  .edu-year { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); padding-top: 2px; letter-spacing: 0.02em; }
+  .edu-degree { font-size: 15px; font-weight: 500; margin-bottom: 2px; }
+  .edu-school { font-size: 14px; color: var(--ink-muted); margin-bottom: 3px; }
+  .edu-detail { font-size: 13px; color: var(--ink-faint); font-family: var(--mono); }
+
+  .exp-list { display: flex; flex-direction: column; gap: 2rem; }
+  .exp-item { display: grid; grid-template-columns: 130px 1fr; gap: 1rem; }
+  .exp-period { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); padding-top: 2px; letter-spacing: 0.02em; line-height: 1.5; }
+  .exp-role { font-size: 15px; font-weight: 500; margin-bottom: 2px; }
+  .exp-company { font-size: 14px; color: var(--accent); margin-bottom: 6px; font-weight: 500; }
+  .exp-desc { font-size: 14px; color: var(--ink-muted); line-height: 1.65; }
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .tag { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); background: var(--paper-warm); border: 1px solid var(--rule); border-radius: 2px; padding: 2px 8px; letter-spacing: 0.03em; }
+
+  .research-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .research-item { background: var(--paper-warm); border: 1px solid var(--rule); border-radius: 6px; padding: 1.25rem 1.5rem; }
+  .research-title { font-family: var(--serif); font-size: 17px; font-weight: 500; margin-bottom: 6px; line-height: 1.4; }
+  .research-desc { font-size: 14px; color: var(--ink-muted); line-height: 1.65; }
+
+  .pub-list { display: flex; flex-direction: column; gap: 1.75rem; }
+  .pub-item { position: relative; padding-left: 1.25rem; }
+  .pub-item::before { content:''; position:absolute; left:0; top:8px; width:4px; height:4px; background:var(--accent); border-radius:50%; }
+  .pub-title { font-family: var(--serif); font-size: 16px; line-height: 1.4; margin-bottom: 4px; }
+  .pub-authors { font-size: 13px; color: var(--ink-muted); margin-bottom: 3px; }
+  .pub-venue { font-size: 13px; color: var(--ink-faint); font-family: var(--mono); letter-spacing: 0.02em; }
+  .pub-links { margin-top: 6px; display: flex; gap: 1rem; }
+  .pub-link { font-family: var(--mono); font-size: 11px; color: var(--accent); text-decoration: none; letter-spacing: 0.04em; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+  .pub-link:hover { border-color: var(--accent); }
+
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem; }
+  .contact-item { display: flex; flex-direction: column; gap: 3px; }
+  .contact-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
+  .contact-value { font-size: 14px; color: var(--ink-muted); }
+  .contact-value a { color: var(--accent); text-decoration: none; }
+  .contact-value a:hover { text-decoration: underline; }
+
+  footer { max-width: var(--max); margin: 0 auto; padding: 2rem 2rem 3rem; border-top: 1px solid var(--rule); font-family: var(--mono); font-size: 12px; color: var(--ink-faint); display: flex; justify-content: space-between; letter-spacing: 0.02em; }
+
+  @media (max-width: 600px) {
+    #about { grid-template-columns: 1fr; }
+    .avatar-wrap { flex-direction: row; align-items: center; margin-bottom: 1rem; }
+    .avatar { width: 80px; height: 80px; font-size: 1.5rem; }
+    .edu-item, .exp-item { grid-template-columns: 1fr; gap: 0.25rem; }
+    .contact-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-name">li.yihan</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+  <section id="about">
+    <div class="hero-text">
+      <p class="hero-subtitle">Master's Student · LLM &amp; Agentic RL &amp; CV</p>
+      <h1>Li Yihan</h1>
+      <div style="margin-bottom:1.25rem;">
+        <span class="status-pill">
+          <span class="status-dot"></span>
+          Seeking internship positions in LLM / AI
+        </span>
+      </div>
+      <p class="hero-bio">
+        I am a Master's student in Communication Engineering at Beijing University of Posts and Telecommunications (BUPT). I embrace AI wholeheartedly and keep growing every day. My work spans large language model post-training, agentic reinforcement learning, and multimodal computer vision — with a strong belief in bridging cutting-edge research and real-world impact.
+      </p>
+      <div class="hero-links">
+        <a href="mailto:yihan.li0358@gmail.com">Email</a>
+        <a href="https://github.com/yihan35" target="_blank">GitHub</a>
+      </div>
+    </div>
+    <div class="avatar-wrap">
+      <div class="avatar">李</div>
+    </div>
+  </section>
+
+  <section id="education">
+    <p class="section-label">Education</p>
+    <div class="edu-list">
+      <div class="edu-item">
+        <span class="edu-year">2024 — 2027</span>
+        <div>
+          <p class="edu-degree">M.Eng. in Communication Engineering</p>
+          <p class="edu-school">Beijing University of Posts and Telecommunications (BUPT)</p>
+        </div>
+      </div>
+      <div class="edu-item">
+        <span class="edu-year">2020 — 2024</span>
+        <div>
+          <p class="edu-degree">B.Eng. in Communication Engineering</p>
+          <p class="edu-school">Nanjing University of Posts and Telecommunications (NJUPT)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <p class="section-label">Experience</p>
+    <div class="exp-list">
+      <div class="exp-item">
+        <span class="exp-period">Oct 2025 —<br>Feb 2026</span>
+        <div>
+          <p class="exp-role">LLM Algorithm Intern</p>
+          <p class="exp-company">Kuaishou (快手)</p>
+          <p class="exp-desc">Worked on a conversational AI chat product combining large language models with reinforcement learning, focusing on improving response quality and user engagement through RLHF-based post-training pipelines.</p>
+          <div class="exp-tags">
+            <span class="tag">LLM</span>
+            <span class="tag">Reinforcement Learning</span>
+            <span class="tag">RLHF</span>
+            <span class="tag">Post-training</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <span class="exp-period">Apr — Sep 2025</span>
+        <div>
+          <p class="exp-role">LLM Algorithm Intern</p>
+          <p class="exp-company">TeleAI</p>
+          <p class="exp-desc">Developed and optimized role-playing language models, working on character consistency, persona alignment, and instruction-following for immersive conversational AI experiences.</p>
+          <div class="exp-tags">
+            <span class="tag">LLM</span>
+            <span class="tag">Role-playing</span>
+            <span class="tag">SFT</span>
+            <span class="tag">Alignment</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <p class="section-label">Research Interests</p>
+    <div class="research-list">
+      <div class="research-item">
+        <p class="research-title">LLM Post-Training</p>
+        <p class="research-desc">Focused on the post-training phase of large language models — including supervised fine-tuning (SFT), reinforcement learning from human feedback (RLHF), and preference optimization methods such as DPO. Interested in how post-training shapes model behavior, instruction-following, and alignment with human values.</p>
+      </div>
+      <div class="research-item">
+        <p class="research-title">Agentic Reinforcement Learning</p>
+        <p class="research-desc">Exploring the intersection of LLM-based agents, chain-of-thought reasoning, and reinforcement learning. Particularly interested in autonomous coding agents and multi-step reasoning systems that can plan, reflect, and self-improve through environment interaction.</p>
+      </div>
+      <div class="research-item">
+        <p class="research-title">Multimodal Computer Vision</p>
+        <p class="research-desc">Investigating multimodal learning that bridges vision and language. Interested in building foundation models that jointly understand images and text for tasks such as visual question answering, image captioning, and cross-modal retrieval.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <p class="section-label">Publications</p>
+    <div class="pub-list">
+      <div class="pub-item">
+        <p class="pub-title">Multi-view 3D model recognition via multi-label and multi-level fusion with bidirectional GRU</p>
+        <p class="pub-authors">Daojie Zhou, <strong>Yihan Li</strong>, Yi Li</p>
+        <p class="pub-venue">Journal of Visual Communication and Image Representation (JVCI) · January 2026</p>
+        <div class="pub-links">
+          <a class="pub-link" href="https://www.sciencedirect.com/science/article/pii/S1047320325003062" target="_blank">[paper]</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <p class="section-label">Contact</p>
+    <p style="font-size:15px;color:var(--ink-muted);margin-bottom:1.5rem;max-width:480px;">
+      I am actively seeking <strong>internship positions</strong> in LLM / AI research and engineering. Feel free to reach out — I am always happy to chat about research, collaboration, or opportunities.
+    </p>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <span class="contact-label">Email</span>
+        <span class="contact-value"><a href="mailto:yihan.li0358@gmail.com">yihan.li0358@gmail.com</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">GitHub</span>
+        <span class="contact-value"><a href="https://github.com/yihan35" target="_blank">github.com/yihan35</a></span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>Li Yihan · BUPT Master's Student</span>
+  <span>Last updated April 2026</span>
+</footer>
+
+</body>
+</html>
